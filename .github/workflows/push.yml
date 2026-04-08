@@ -1,18 +1,28 @@
 name: Push to Replicate
 
 on:
-  workflow_dispatch:         # Manuel tetikleme (Actions sekmesinden butona bas)
+  workflow_dispatch:
   push:
-    branches: [main]         # main'e push edince otomatik çalışır (istersen kaldır)
+    branches: [main]
 
 jobs:
   push:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - name: Free disk space
-        uses: jlumbroso/free-disk-space@main   # büyük modeller için alan açar
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Disk alanı aç (büyük modeller için)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
 
       - name: Setup Cog
         uses: replicate/setup-cog@v2
