@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Disk alanı aç (büyük modeller için)
+      - name: Disk alanı aç
         uses: jlumbroso/free-disk-space@main
         with:
           tool-cache: false
@@ -23,6 +23,18 @@ jobs:
           large-packages: true
           docker-images: true
           swap-storage: true
+
+      - name: Weights indir (image'a göm = cold start yok)
+        run: |
+          mkdir -p weights/propainter
+          wget -q -O weights/propainter/ProPainter.pth \
+            "https://github.com/sczhou/ProPainter/releases/download/v0.1.0/ProPainter.pth"
+          wget -q -O weights/propainter/recurrent_flow_completion.pth \
+            "https://github.com/sczhou/ProPainter/releases/download/v0.1.0/recurrent_flow_completion.pth"
+          wget -q -O weights/propainter/raft-things.pth \
+            "https://github.com/sczhou/ProPainter/releases/download/v0.1.0/raft-things.pth"
+          echo "Weights indirildi:"
+          ls -lh weights/propainter/
 
       - name: Setup Cog
         uses: replicate/setup-cog@v2
