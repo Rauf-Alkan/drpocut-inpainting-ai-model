@@ -18,5 +18,8 @@ build:
     - "einops"
     - "timm"
     - "tqdm"
+    - "torchvision==0.16.0"
+    - "scikit-image"
+    - "flow_vis"
 
 predict: "predict.py:Predictor"
