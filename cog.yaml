@@ -9,7 +9,14 @@ build:
   python_packages:
     - "torch==2.1.0"
     - "torchvision==0.16.0"
-  run:
-    - "pip install -r requirements.txt"
+    - "numpy"
+    - "scipy"
+    - "pillow"
+    - "opencv-python"
+    - "imageio"
+    - "imageio-ffmpeg"
+    - "einops"
+    - "timm"
+    - "tqdm"
 
 predict: "predict.py:Predictor"
