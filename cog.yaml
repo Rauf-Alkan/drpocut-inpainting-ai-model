@@ -9,7 +9,7 @@ build:
   python_packages:
     - "torch==2.1.0"
     - "torchvision==0.16.0"
-    - "numpy"
+    - "numpy<2"
     - "scipy"
     - "pillow"
     - "opencv-python"
@@ -18,8 +18,7 @@ build:
     - "einops"
     - "timm"
     - "tqdm"
-    - "torchvision==0.16.0"
     - "scikit-image"
-    - "flow_vis"
+    - "matplotlib"
 
 predict: "predict.py:Predictor"
