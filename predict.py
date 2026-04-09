@@ -19,7 +19,7 @@ class Predictor(BasePredictor):
         self,
         video: CogPath = Input(description="İnpainting yapılacak video (.mp4)"),
         mask: CogPath = Input(description="Maske — tek png veya video (.png / .mp4)"),
-        fp16: bool = Input(description="Yarı hassasiyet — daha hızlı, daha az VRAM", default=True),
+        fp16: bool = Input(description="Yarı hassasiyet — daha hızlı, daha az VRAM", default=False),
         neighbor_length: int = Input(description="Lokal komşu sayısı (azalt = daha az VRAM)", default=10, ge=5, le=20),
         subvideo_length: int = Input(description="Alt video uzunluğu (azalt = daha az VRAM)", default=80, ge=20, le=150),
         max_seconds: int = Input(description="Maksimum işlenecek süre (saniye)", default=10, ge=1, le=60),
